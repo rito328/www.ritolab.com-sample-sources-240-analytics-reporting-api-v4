@@ -1,0 +1,7 @@
+.idea/*
+vendor/*
+*.json
+!composer.json
+*.txt
+*.csv
+.env
