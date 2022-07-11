@@ -190,8 +190,8 @@ class RescueUniversalAnalyticsData
     private function makeMetrics(): array
     {
         $pageView = new Metric();
-        $pageView->setExpression("ga:pageviews");
-        $pageView->setAlias("pageviews");
+        $pageView->setExpression('ga:pageviews');
+        $pageView->setAlias('pageviews');
 
         return [
             $pageView
@@ -208,19 +208,19 @@ class RescueUniversalAnalyticsData
     private function makeDimensions(): array
     {
         $pagePath = new Dimension();
-        $pagePath->setName("ga:pagePath");
+        $pagePath->setName('ga:pagePath');
 
         $hostname = new Dimension();
-        $hostname->setName("ga:hostname");
+        $hostname->setName('ga:hostname');
 
         $dateHourMinute = new Dimension();
-        $dateHourMinute->setName("ga:dateHourMinute");
+        $dateHourMinute->setName('ga:dateHourMinute');
 
         $sourceMedium = new Dimension();
-        $sourceMedium->setName("ga:sourceMedium");
+        $sourceMedium->setName('ga:sourceMedium');
 
         $previousPagePath = new Dimension();
-        $previousPagePath->setName("ga:previousPagePath");
+        $previousPagePath->setName('ga:previousPagePath');
 
         // Up to 9 pieces.
         return [
@@ -260,7 +260,7 @@ class RescueUniversalAnalyticsData
         $pathFilter = new DimensionFilter();
         $pathFilter->setDimensionName('ga:pagePath');
         $pathFilter->setOperator('EXACT');
-        $pathFilter->setExpressions(['YouSpecify']);
+        $pathFilter->setExpressions(['< YouSpecify >']);
 
         $filters = new DimensionFilterClause();
         $filters->setFilters([$pathFilter]);
@@ -277,7 +277,7 @@ class RescueUniversalAnalyticsData
     private function initializeAnalytics(): AnalyticsReporting
     {
         $client = new Client();
-        $client->setApplicationName("Analytics Reporting");
+        $client->setApplicationName('Analytics Reporting');
         $client->setAuthConfig($this->credentialFileLocation);
         $client->setScopes(['https://www.googleapis.com/auth/analytics.readonly']);
         $analytics = new AnalyticsReporting($client);
